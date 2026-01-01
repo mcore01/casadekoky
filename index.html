@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de Koky | Alquiler con Piscina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        .swiper-button-next, .swiper-button-prev { color: #2563eb !important; }
+        .swiper-pagination-bullet-active { background: #2563eb !important; }
+        
+        /* Estilo para que el formulario de Google sea responsivo */
+        .google-form-wrapper {
+            position: relative;
+            width: 100%;
+            height: 700px; /* Altura ideal para formularios */
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .google-form-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">CASA DE KOKY</h1>
+            <div class="hidden md:flex items-center space-x-8 text-gray-600 font-medium">
+                <a href="#inicio" data-key="nav-home" class="hover:text-blue-600">Inicio</a>
+                <a href="#servicios" data-key="nav-services" class="hover:text-blue-600">Servicios</a>
+                <a href="#galeria" data-key="nav-gallery" class="hover:text-blue-600">Galería</a>
+                <a href="#contacto" data-key="nav-reserve" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Reservar Ahora</a>
+                
+                <button onclick="toggleLanguage()" class="flex items-center space-x-2 border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-100 transition">
+                    <i class="fas fa-globe text-blue-600"></i>
+                    <span id="lang-text" class="text-sm font-bold">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative h-[80vh] flex items-center justify-center text-white">
+        <img src="C:\Users\romme\Desktop\Portal Web\Fotos\portada.jpg"
+             alt="Piscina de lujo" class="absolute inset-0 w-full h-full object-cover brightness-50">
+        <div class="relative text-center px-4">
+            <h2 data-key="hero-title" class="text-4xl md:text-6xl font-bold mb-4">Desconecta en tu propia piscina privada</h2>
+            <p data-key="hero-subtitle" class="text-xl mb-8">El refugio perfecto para tus vacaciones</p>
+            <a href="#contacto" data-key="hero-btn" class="bg-yellow-500 text-blue-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-400 transition">Ver Disponibilidad</a>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-16 container mx-auto px-6">
+        <h3 data-key="services-title" class="text-3xl font-bold text-center text-gray-800 mb-12">Lo que ofrece la casa</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <i class="fas fa-swimmer text-4xl text-blue-500 mb-4"></i>
+                <h4 data-key="s1-t" class="text-xl font-semibold mb-2">Piscina</h4>
+                <p data-key="s1-d" class="text-gray-600">9 x 4.5 mts, profundidad de 1.5 a 2 mts.</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <i class="fas fa-user-shield text-4xl text-blue-500 mb-4"></i>
+                <h4 data-key="s2-t" class="text-xl font-semibold mb-2">Seguridad 24/7</h4>
+                <p data-key="s2-d" class="text-gray-600">Seguridad perimetral todo el año.</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <i class="fas fa-snowflake text-4xl text-blue-500 mb-4"></i>
+                <h4 data-key="s3-t" class="text-xl font-semibold mb-2">Aire Acondicionado</h4>
+                <p data-key="s3-d" class="text-gray-600">Ambientes climatizados.</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <i class="fas fa-bed text-4xl text-blue-500 mb-4"></i>
+                <h4 data-key="s4-t" class="text-xl font-semibold mb-2">Habitaciones</h4>
+                <p data-key="s4-d" class="text-gray-600">Hab 1: 2 Queen | Hab 2: 1 King</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <i class="fas fa-wifi text-4xl text-blue-500 mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Starlink WiFi</h4>
+                <p data-key="s5-d" class="text-gray-600">Internet satelital de alta velocidad.</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <i class="fas fa-car text-4xl text-blue-500 mb-4"></i>
+                <h4 data-key="s6-t" class="text-xl font-semibold mb-2">Estacionamiento</h4>
+                <p data-key="s6-d" class="text-gray-600">Espacio para más de 4 vehículos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-t border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 data-key="design-title" class="text-2xl font-bold text-gray-800 mb-6">Un diseño pensado para el relax</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-lg mr-4 font-bold">1</div>
+                            <div>
+                                <h4 data-key="d1-t" class="font-bold text-gray-800">Convivencia y Amigos</h4>
+                                <p data-key="d1-d" class="text-gray-600 text-sm">Patio espacioso para carnes asadas y estacionamiento para más de 4 vehículos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-lg mr-4 font-bold">2</div>
+                            <div>
+                                <h4 data-key="d2-t" class="font-bold text-gray-800">Naturaleza y Frescura</h4>
+                                <p data-key="d2-d" class="text-gray-600 text-sm">Jardín con árboles de frutas tropicales de temporada y duchas exteriores.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-lg mr-4 font-bold">3</div>
+                            <div>
+                                <h4 data-key="d3-t" class="font-bold text-gray-800">Vistas de Ensueño</h4>
+                                <p data-key="d3-d" class="text-gray-600 text-sm">Terraza para apreciar el atardecer y amanecer con vista al océano y montañas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+                    <h3 data-key="others-title" class="text-2xl font-bold text-gray-800 mb-6">Otras Comodidades</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-couch text-blue-500 mr-3"></i>
+                            <span data-key="a1">Sala de estar</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-tv text-blue-500 mr-3"></i>
+                            <span>Smart TV</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-utensils text-blue-500 mr-3"></i>
+                            <span data-key="a2">Cocina completa</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <i class="fas fa-motorcycle text-blue-500 mr-3"></i>
+                            <span data-key="a3">Delivery de comida</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 p-4 bg-yellow-100 rounded-xl text-sm text-yellow-800">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        <strong data-key="note-label">Nota:</strong> <span data-key="note-text">Los árboles frutales ofrecen delicias cuando están en temporada.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h3 data-key="nav-gallery" class="text-3xl font-bold text-gray-800 mb-4">Galería de Fotos</h3>
+            <p data-key="gallery-sub" class="text-gray-600 mb-12">Haz clic en las imágenes para verlas en grande. Presiona <strong>Esc</strong> para salir.</p>
+
+            <div class="swiper mySwiper pb-12">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="fotos/foto1.jpg" onclick="openLightbox(this.src)" class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in hover:scale-105 transition duration-300" alt="Piscina"></div>
+                    <div class="swiper-slide"><img src="fotos/foto2.jpg" onclick="openLightbox(this.src)" class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in hover:scale-105 transition duration-300" alt="Piscina"></div>
+                    <div class="swiper-slide"><img src="fotos/foto3.jpg" onclick="openLightbox(this.src)" class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in hover:scale-105 transition duration-300" alt="Vista"></div>
+                    <div class="swiper-slide"><img src="fotos/foto4.jpg" onclick="openLightbox(this.src)" class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in hover:scale-105 transition duration-300" alt="Vista"></div>
+                    <div class="swiper-slide"><img src="fotos/foto5.jpg" onclick="openLightbox(this.src)" class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in hover:scale-105 transition duration-300" alt="Interior"></div>
+                    <div class="swiper-slide"><img src="fotos/foto6.jpg" onclick="openLightbox(this.src)" class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in hover:scale-105 transition duration-300" alt="Interior"></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black bg-opacity-90 flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-5 right-8 text-white text-5xl hover:text-gray-300 z-[110]">×</button>
+        <button onclick="changeImage(-1)" class="absolute left-5 text-white text-4xl hover:text-blue-400 p-4 z-[110]"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl transition-all duration-300">
+        <button onclick="changeImage(1)" class="absolute right-5 text-white text-4xl hover:text-blue-400 p-4 z-[110]"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <section id="ubicacion" class="py-16 container mx-auto px-6">
+        <h3 data-key="loc-title" class="text-3xl font-bold text-center text-gray-800 mb-8">Nuestra Ubicación</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div>
+                <h4 data-key="loc-how" class="text-xl font-semibold mb-4">¿Cómo llegar?</h4>
+                <p class="text-gray-600 mb-4">Residencial Canarias, Casa N5, La Libertad. El Salvador, C.A.</p>
+                <p data-key="loc-dist" class="text-gray-600 mb-4">A 45 km. del Aeropuerto Internacional El Salvador</p>
+                 <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-xl">
+                        <h5 data-key="dist-15" class="font-bold text-blue-800 mb-2 underline text-sm">A menos de 1.5 Km</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><i class="fas fa-store mr-2 text-xs"></i><span data-key="l1">Supermercados</span></li>
+                            <li><i class="fas fa-utensils mr-2 text-xs"></i><span data-key="l2">Restaurantes</span></li>
+                            <li><i class="fas fa-bread-slice mr-2 text-xs"></i><span data-key="l3">Panaderías</span></li>
+                            <li><i class="fas fa-hamburger mr-2 text-xs"></i><span data-key="l4">Hamburguesas</span></li>
+                            <li><i class="fas fa-pizza-slice mr-2 text-xs"></i><span data-key="l5">Pizzerias</span></li>
+                            <li><i class="fas fa-mug-hot mr-2 text-xs"></i>Coffee Shop</li>
+                            <li><i class="fas fa-glasses mr-2 text-xs"></i><span data-key="l6">Ópticas</span></li>
+                            <li><i class="fas fa-phone mr-2 text-xs"></i><span data-key="l7">Empresas Telefónicas</span></li>
+                            <li><i class="fas fa-landmark mr-2 text-xs"></i><span data-key="l8">Bancos</span></li>
+                            <li><i class="fas fa-spa mr-2 text-xs"></i><span data-key="l9">Salas de belleza</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-xl">
+                        <h5 data-key="dist-30" class="font-bold text-green-800 mb-2 underline text-sm">A menos de 3.0 Km</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><i class="fas fa-users mr-2 text-xs"></i>Sunset Park</li>
+                            <li><i class="fas fa-anchor mr-2 text-xs"></i><span data-key="l10">Muelle Puerto</span></li>
+                            <li><i class="fas fa-water mr-2 text-xs"></i>Tunco Beach</li>
+                            <li><i class="mr-2 text-xs"></i><span data-key="l11">Otros lugares de interés</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg h-80">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d274.0953965070411!2d-89.33922002039799!3d13.490132774850307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7cd500588d183d%3A0x54b3b78a5e13ca26!2sCasa%20de%20koky!5e1!3m2!1ses-419!2sus!4v1767231588959!5m2!1ses-419!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h3 data-key="rates-title" class="text-3xl font-bold text-center text-gray-800 mb-12">Tarifas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="border rounded-2xl p-8 hover:shadow-xl transition text-center">
+                    <h4 data-key="r1-t" class="text-xl font-bold text-gray-700">Pase diario</h4>
+                    <div class="text-3xl font-bold text-blue-600 my-4">$100.00</div>
+                    <p class="text-sm text-gray-500 mb-4">08:00 a.m. - 07:00 p.m.</p>
+                    <ul class="text-sm text-gray-600"><li><span data-key="r-cap">6 adultos y 2 niños</span></li></ul>
+                </div>
+                <div class="border-2 border-blue-500 rounded-2xl p-8 shadow-lg bg-blue-50 text-center relative">
+                    <span data-key="r-rec" class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-xs font-bold">RECOMENDADO</span>
+                    <h4 data-key="r2-t" class="text-xl font-bold text-gray-700">Estadía Completa</h4>
+                    <div class="text-3xl font-bold text-blue-600 my-4">$150.00</div>
+       <!--            <p data-key="r2-sub" class="text-sm text-gray-500 mb-4">Estadía Completa</p> -->
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li data-key="r2-d">Check In 03:00 p.m. Check Out 01:00 p.m.</li>
+                        <li data-key="r-cap">6 adultos y 2 niños</li>
+                    </ul>
+                </div>
+                <div class="border rounded-2xl p-8 hover:shadow-xl transition text-center">
+                    <h4 data-key="r3-t" class="text-xl font-bold text-gray-700">Adicionales</h4>
+                    <div class="text-2xl font-bold text-gray-800 my-4">$10.00 <span data-key="r-adult" class="text-sm font-normal">Adulto</span></div>
+                    <div class="text-2xl font-bold text-gray-800 mb-4">$6.00 <span data-key="r-child" class="text-sm font-normal">Niño</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h3 data-key="nav-reserve" class="text-3xl font-bold text-gray-800 mb-4">Solicita tu Reserva</h3>
+            <p data-key="contact-sub" class="text-gray-600 mb-8 font-medium">Completa tus datos y nos pondremos en contacto contigo para confirmar la fecha.</p>
+            
+            <div class="bg-white p-2 md:p-4 rounded-3xl shadow-2xl border border-blue-100">
+                <div class="google-form-wrapper" style="height: 800px;">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSc8c85qCZsrJ89ujzRPTp2przo4lm7H7Y2Bz-UXUn5IQC94Xw/viewform?embedded=true" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                        Cargando…
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-gray-500 text-sm">
+                <span><i class="fas fa-check-circle text-green-500 mr-2"></i><span data-key="f1">Respuesta en menos de 24h</span></span>
+                <span><i class="fas fa-shield-alt text-blue-500 mr-2"></i><span data-key="f2">Tus datos están protegidos</span></span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <p>© 2026 Casa de Koky - <span data-key="f-rights">Todos los derechos reservados</span></p>
+        <div class="mt-4 space-x-4">
+            <a href="https://www.instagram.com/rommelmelendez/" target="_blank" class="text-2xl hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/AMelendezR/" target="_blank" class="text-2xl hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/50378866281?text=Hola,%20quisiera%20consultar%20por%20la%20casa" target="_blank" class="text-2xl hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/50378866281?text=Hola,%20me%20interesa%20alquilar%20la%20casa" 
+       class="fixed bottom-10 right-10 bg-[#25d366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 hover:scale-110 transition" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // --- TRADUCCIONES ---
+        const translations = {
+            es: {
+                "nav-home": "Inicio", "nav-services": "Servicios", "nav-gallery": "Galería", "nav-reserve": "Reservar Ahora",
+                "hero-title": "Desconecta en tu propia piscina privada", "hero-subtitle": "El refugio perfecto para tus vacaciones", "hero-btn": "Ver Disponibilidad",
+                "services-title": "Lo que ofrece la casa", "s1-t": "Piscina", "s1-d": "9 x 4.5 mts, profundidad de 1.5 a 2 mts.",
+                "s2-t": "Seguridad 24/7", "s2-d": "Seguridad perimetral todo el año.", "s3-t": "Aire Acondicionado", "s3-d": "Ambientes climatizados.",
+                "s4-t": "Habitaciones", "s4-d": "Hab 1: 2 Queen | Hab 2: 1 King", "s5-d": "Internet satelital de alta velocidad.",
+                "s6-t": "Estacionamiento", "s6-d": "Espacio para más de 4 vehículos.",
+                "design-title": "Un diseño pensado para el relax", "d1-t": "Convivencia y Amigos", "d1-d": "Patio espacioso para carnes asadas y estacionamiento para más de 4 vehículos.",
+                "d2-t": "Naturaleza y Frescura", "d2-d": "Jardín con árboles de frutas tropicales de temporada y duchas exteriores.",
+                "d3-t": "Vistas de Ensueño", "d3-d": "Terraza para apreciar el atardecer y amanecer con vista al océano y montañas.",
+                "others-title": "Otras Comodidades", "a1": "Sala de estar", "a2": "Cocina completa", "a3": "Delivery de comida",
+                "note-label": "Nota:", "note-text": "Los árboles frutales ofrecen delicias cuando están en temporada.",
+                "gallery-sub": "Haz clic en las imágenes para verlas en grande. Presiona Esc para salir.",
+                "loc-title": "Nuestra Ubicación", "loc-how": "¿Cómo llegar?", "loc-dist": "A 45 km. del Aeropuerto Internacional El Salvador",
+                "dist-15": "A menos de 1.5 Km", "l1": "Supermercados", "l2": "Restaurantes", "l3": "Panaderías", "l4": "Hamburguesas", "l5": "Pizzerias", "l6": "Ópticas", "l7": "Empresas Telefónicas", "l8": "Bancos", "l9": "Salas de belleza",
+                "dist-30": "A menos de 3.0 Km", "l10": "Muelle Puerto", "l11": "Otros lugares de interés",
+                "rates-title": "Tarifas", "r1-t": "Pase diario", "r-cap": "6 adultos y 2 niños", "r-rec": "RECOMENDADO", "r2-t": "Estadía Completa", "r2-sub": "Estadía Completa", "r2-d": "Check In 03:00 p.m. Check Out 01:00 p.m.",
+                "r3-t": "Adicionales", "r-adult": "Adulto", "r-child": "Niño",
+                "contact-sub": "Completa tus datos y nos pondremos en contacto contigo para confirmar la fecha.",
+                "f1": "Respuesta en menos de 24h", "f2": "Tus datos están protegidos", "f-rights": "Todos los derechos reservados"
+            },
+            en: {
+                "nav-home": "Home", "nav-services": "Services", "nav-gallery": "Gallery", "nav-reserve": "Book Now",
+                "hero-title": "Unplug in your own private pool", "hero-subtitle": "The perfect getaway for your vacations", "hero-btn": "Check Availability",
+                "services-title": "What the house offers", "s1-t": "Pool", "s1-d": "9 x 4.5 mts, 1.5 to 2 mts depth.",
+                "s2-t": "24/7 Security", "s2-d": "Perimeter security all year round.", "s3-t": "Air Conditioning", "s3-d": "Climate-controlled environments.",
+                "s4-t": "Rooms", "s4-d": "Room 1: 2 Queen | Room 2: 1 King", "s5-d": "High-speed satellite internet.",
+                "s6-t": "Parking", "s6-d": "Space for more than 4 vehicles.",
+                "design-title": "Designed for relaxation", "d1-t": "Friends & Gathering", "d1-d": "Spacious patio for BBQ and parking for more than 4 vehicles.",
+                "d2-t": "Nature & Freshness", "d2-d": "Garden with seasonal tropical fruit trees and outdoor showers.",
+                "d3-t": "Dreamy Views", "d3-d": "Terrace to enjoy sunset and sunrise with ocean and mountain views.",
+                "others-title": "Other Amenities", "a1": "Living Room", "a2": "Full Kitchen", "a3": "Food Delivery",
+                "note-label": "Note:", "note-text": "Fruit trees offer treats when in season.",
+                "gallery-sub": "Click on images to enlarge. Press Esc to exit.",
+                "loc-title": "Our Location", "loc-how": "How to get there?", "loc-dist": "45 km from El Salvador International Airport",
+                "dist-15": "Within 1.5 Km", "l1": "Supermarkets", "l2": "Restaurants", "l3": "Bakeries", "l4": "Burgers", "l5": "Pizza Places", "l6": "Opticians", "l7": "Phone Companies", "l8": "Banks", "l9": "Beauty Salons",
+                "dist-30": "Within 3.0 Km", "l10": "Port Pier", "l11": "Other points of interest",
+                "rates-title": "Rates", "r1-t": "Day Pass", "r-cap": "6 adults and 2 children", "r-rec": "RECOMMENDED", "r2-t": "Full Stay", "r2-sub": "Full Stay", "r2-d": "Check In 03:00 p.m. Check Out 01:00 p.m.",
+                "r3-t": "Additional", "r-adult": "Adult", "r-child": "Child",
+                "contact-sub": "Fill in your details and we will contact you to confirm the date.",
+                "f1": "Reply in less than 24h", "f2": "Your data is protected", "f-rights": "All rights reserved"
+            }
+        };
+
+        let currentLang = 'es';
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('lang-text').innerText = currentLang === 'es' ? 'EN' : 'ES';
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    elem.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        // --- SWIPER & LIGHTBOX (Tu lógica original) ---
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1, spaceBetween: 20, loop: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+        });
+
+        const images = Array.from(document.querySelectorAll('.swiper-slide img')).map(img => img.src);
+        let currentIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(src) {
+            currentIndex = images.indexOf(src);
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateLightboxImage() {
+            if(currentIndex !== -1) lightboxImg.src = images[currentIndex];
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            updateLightboxImage();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === "Escape") closeLightbox();
+                if (e.key === "ArrowRight") changeImage(1);
+                if (e.key === "ArrowLeft") changeImage(-1);
+            }
+        });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    </script>
+</body>
+</html>
