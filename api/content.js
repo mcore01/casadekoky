@@ -1,9 +1,9 @@
-export default function handler(req, res) {
+/*export default function handler(req, res) {
   res.json({
     test: "Backend funcionando",
     hero: "Casa de Koky ya es plataforma"
   });
-}
+} */
 
 import { createClient } from "@supabase/supabase-js";
 
@@ -26,3 +26,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: err.message });
   }
 }
+
