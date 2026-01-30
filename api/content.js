@@ -5,7 +5,15 @@
   });
 } */
 
-import { createClient } from "@supabase/supabase-js";
+export default function handler(req, res) {
+  res.json({
+    url: process.env.SUPA_URL || "NO_URL",
+    key: process.env.SUPA_KEY ? "OK" : "NO_KEY"
+  });
+}
+
+
+/*import { createClient } from "@supabase/supabase-js";
 
 export default async function handler(req, res) {
   try {
@@ -25,5 +33,6 @@ export default async function handler(req, res) {
     console.error(err);
     res.status(500).json({ error: err.message });
   }
-}
+}*/
+
 
