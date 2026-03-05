@@ -1,7 +1,14 @@
-// 1. CONFIGURACIÓN DE CONEXIÓN (Usa tus llaves de Settings > API)
-const SUPABASE_URL = 'https://pmejptyabrcqyfonzjax.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_HzS1qYKDxvSPdjveYAkD2Q_ew6WEgDS';
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+// Conexión dinámica usando variables de entorno de Vercel
+const SUPABASE_URL = window.location.hostname === 'localhost' 
+    ? 'TU_URL_MANUAL_PARA_LOCAL' 
+    : 'https://' + window.location.hostname.split('-')[0] + '.supabase.co'; // O usa la variable directa si prefieres
+
+// Lo más estable para tu nivel actual es:
+const supabaseUrl = 'https://pmejptyabrcqyfonzjax.supabase.co'; // Tu URL real
+const supabaseKey = 'sb_publishable_HzS1qYKDxvSPdjveYAkD2Q_ew6WEgDS'; // Tu Key real
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+
 
 // 2. VARIABLES DE ESTADO
 let currentLang = 'es';
@@ -65,4 +72,5 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarConfiguracion();
     cargarGaleria();
     // Aquí puedes incluir tu función de toggleMenu que ya tenías
+
 });
