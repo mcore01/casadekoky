@@ -30,33 +30,36 @@ async function cargarConfiguracion() {
     });
 }
 
-// 4. FUNCIÓN PARA CARGAR LA GALERÍA DINÁMICA
 async function cargarGaleria() {
     const { data, error } = await _supabase
         .from('galeria_fotos')
         .select('*')
         .order('orden', { ascending: true });
 
-    if (error) return;
+    if (error) {
+        console.error("Error en galería:", error);
+        return;
+    }
 
     const container = document.getElementById('swiper-wrapper-gallery');
-    if (!container) return;
+    
+    if (container) {
+        container.innerHTML = ''; // Borra el mensaje de "Cargando..."
+        
+        data.forEach(foto => {
+            container.innerHTML += `
+                <div class="swiper-slide">
+                    <img src="${foto.url_imagen}" 
+                         onclick="openLightbox(this.src)" 
+                         class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in" 
+                         alt="${foto.alt_es || 'Casa de Koky'}">
+                </div>`;
+        });
 
-    container.innerHTML = ''; // Limpiamos contenido estático
-    data.forEach(foto => {
-        container.innerHTML += `
-            <div class="swiper-slide">
-                <img src="${foto.url_imagen}" 
-                     onclick="openLightbox(this.src)" 
-                     class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in"
-                     alt="${foto.alt_es}">
-            </div>`;
-    });
-
-    // Reinicializar Swiper después de cargar fotos
-    inicializarSwiper();
+        // IMPORTANTE: Reiniciar Swiper para que reconozca las nuevas fotos
+        inicializarSwiper();
+    }
 }
-
 // 5. INICIALIZADORES (Menú, Swiper, etc.)
 function inicializarSwiper() {
     new Swiper(".mySwiper", {
@@ -74,3 +77,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Aquí puedes incluir tu función de toggleMenu que ya tenías
 
 });
+
