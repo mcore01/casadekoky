@@ -1,7 +1,7 @@
 // 1. CONFIGURACIÓN (RELLENA CON TUS DATOS DE SETTINGS > API)
-/* --> const SUPABASE_URL = 'https://pmejptyabrcqyfonzjax.supabase.co';
+const SUPABASE_URL = 'https://pmejptyabrcqyfonzjax.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_HzS1qYKDxvSPdjveYAkD2Q_ew6WEgDS';
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); */ 
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); 
 
 // 2. ESTADO GLOBAL
 let currentLang = 'es';
@@ -107,5 +107,6 @@ document.addEventListener('keydown', (e) => {
         if (e.key === "ArrowLeft") changeImage(-1);
     }
 });
+
 
 
