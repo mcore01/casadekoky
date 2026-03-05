@@ -1,7 +1,7 @@
 // 1. CONFIGURACIÓN (RELLENA CON TUS DATOS DE SETTINGS > API)
-const SUPABASE_URL ;
-const SUPABASE_KEY ;
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); 
+const SUPA_URL ;
+const SUPA_KEY ;
+const _supabase = supabase.createClient(SUPA_URL, SUPA_KEY); 
 
 // 2. ESTADO GLOBAL
 let currentLang = 'es';
@@ -107,6 +107,7 @@ document.addEventListener('keydown', (e) => {
         if (e.key === "ArrowLeft") changeImage(-1);
     }
 });
+
 
 
 
