@@ -22,7 +22,7 @@ const staticTranslations = {
         "dist-15": "A MENOS DE 1.5 KM", "dist-30": "A MENOS DE 3.0 KM",
         "l1": "Súper", "l2": "Restaurantes", "l8": "Bancos", "l14": "Clínicas", "l15": "Farmacias", "l16": "Gasolineras", "l18": "ATM", "l20": "Coffee Shop",
         "l10": "Muelle del Puerto", "111": "Playa El Tunco", "l12": "Otros lugares",
-        "rates-title": "Tarifas", "r1-t": "Pase diario", "r2-t": "Estadía Completa", "r-cap": "6 adultos y 2 niños", "r-rec": "RECOMENDADO",
+        "rates-title": "Tarifas", "r1-t": "Pase diario", "r2-t": "Estadía Completa - Horario ajustable. Descuentos aplican para múltiples noches y estadías largas.", "r-cap": "6 adultos y 2 niños", "r-rec": "RECOMENDADO",
         "footer-text": "© 2026 Casa de Koky - Todos los derechos reservados"
     },
     en: { 
@@ -36,7 +36,7 @@ const staticTranslations = {
         "dist-15": "WITHIN 1.5 KM", "dist-30": "WITHIN 3.0 KM",
         "l1": "Supermarket", "l2": "Restaurants", "l8": "Banks", "l14": "Clinics", "l15": "Pharmacy", "l16": "Gas Stations", "l18": "ATM", "l20": "Coffee Shop",
         "l10": "Port Pier", "111": "Tunco Beach", "l12": "Other places",
-        "rates-title": "Rates", "r1-t": "Day Pass", "r2-t": "Full Stay", "r-cap": "6 adults & 2 kids", "r-rec": "RECOMMENDED",
+        "rates-title": "Rates", "r1-t": "Day Pass", "r2-t": "Full Stay - Flexible Schedule. Discounts apply for multiple nights and extended stays.", "r-cap": "6 adults & 2 kids", "r-rec": "RECOMMENDED",
         "footer-text": "© 2026 Koky's House - All rights reserved"
     }
 };
@@ -126,3 +126,4 @@ document.addEventListener('keydown', (e) => {
     if (e.key === "ArrowRight") changeImage(1);
     if (e.key === "ArrowLeft") changeImage(-1);
 });
+
