@@ -393,18 +393,7 @@
             icon.classList.toggle('fa-times');
         }
 
-        let currentLang = 'es';
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            const label = currentLang === 'es' ? 'EN' : 'ES';
-            document.getElementById('lang-text').innerText = label;
-            document.getElementById('lang-text-mobile').innerText = label;
-            document.title = translations[currentLang]["page-title"];
-            document.querySelectorAll('[data-key]').forEach(elem => {
-                const key = elem.getAttribute('data-key');
-                if (translations[currentLang][key]) elem.innerText = translations[currentLang][key];
-            });
-        }
+       }
 
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1, spaceBetween: 20, loop: true,
@@ -453,4 +442,5 @@
 
   <script src="main.js"></script>
 </html>
+
 
