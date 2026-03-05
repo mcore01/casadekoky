@@ -62,8 +62,14 @@ async function cargarGaleria() {
 }
 // 5. INICIALIZADORES (Menú, Swiper, etc.)
 function inicializarSwiper() {
-    new Swiper(".mySwiper", {
-        slidesPerView: 1, spaceBetween: 20, loop: true,
+    // Si ya existe un swiper activo, lo destruimos para crear uno nuevo con las fotos de Supabase
+    if (window.swiperInstance) window.swiperInstance.destroy();
+
+    window.swiperInstance = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        // Solo activamos loop si hay más de 3 fotos
+        loop: document.querySelectorAll('.swiper-slide').length > 3, 
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         pagination: { el: ".swiper-pagination", clickable: true },
         breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
@@ -77,4 +83,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Aquí puedes incluir tu función de toggleMenu que ya tenías
 
 });
+
 
