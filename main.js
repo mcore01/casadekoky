@@ -1,34 +1,10 @@
-// Conexión dinámica usando variables de entorno de Vercel
-const SUPABASE_URL = window.location.hostname === 'localhost' 
-    ? 'TU_URL_MANUAL_PARA_LOCAL' 
-    : 'https://' + window.location.hostname.split('-')[0] + '.supabase.co'; // O usa la variable directa si prefieres
+// 1. Evitar doble declaración: NO declares currentLang aquí si ya está en otro lado, 
+// o bórralo del HTML.
+let currentLang = 'es'; 
 
-// Lo más estable para tu nivel actual es:
-const supabaseUrl = 'https://pmejptyabrcqyfonzjax.supabase.co'; // Tu URL real
-const supabaseKey = 'sb_publishable_HzS1qYKDxvSPdjveYAkD2Q_ew6WEgDS'; // Tu Key real
+const supabaseUrl = 'https://tu-url.supabase.co';
+const supabaseKey = 'tu-key-anon';
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-
-
-// 2. VARIABLES DE ESTADO
-let currentLang = 'es';
-const photos = []; // Se llenará desde Supabase
-
-// 3. FUNCIÓN PARA CARGAR PRECIOS Y TEXTOS
-async function cargarConfiguracion() {
-    const { data, error } = await _supabase.from('configuracion_sitio').select('*');
-    if (error) {
-        console.error("Error cargando configuración:", error);
-        return;
-    }
-    
-    data.forEach(item => {
-        const elementos = document.querySelectorAll(`[data-key="${item.clave}"]`);
-        elementos.forEach(el => {
-            el.innerText = currentLang === 'es' ? item.valor_es : item.valor_en;
-        });
-    });
-}
 
 async function cargarGaleria() {
     const { data, error } = await _supabase
@@ -36,52 +12,25 @@ async function cargarGaleria() {
         .select('*')
         .order('orden', { ascending: true });
 
-    if (error) {
-        console.error("Error en galería:", error);
-        return;
-    }
+    if (error) return console.error(error);
 
     const container = document.getElementById('swiper-wrapper-gallery');
-    
     if (container) {
-        container.innerHTML = ''; // Borra el mensaje de "Cargando..."
+        container.innerHTML = data.map(foto => `
+            <div class="swiper-slide">
+                <img src="${foto.url_imagen}" 
+                     onclick="openLightbox(this.src)" 
+                     class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in"
+                     alt="${foto.alt_es}">
+            </div>`).join('');
         
-        data.forEach(foto => {
-            container.innerHTML += `
-                <div class="swiper-slide">
-                    <img src="${foto.url_imagen}" 
-                         onclick="openLightbox(this.src)" 
-                         class="rounded-2xl shadow-lg h-80 w-full object-cover cursor-zoom-in" 
-                         alt="${foto.alt_es || 'Casa de Koky'}">
-                </div>`;
-        });
-
-        // IMPORTANTE: Reiniciar Swiper para que reconozca las nuevas fotos
+        // Llamamos a la versión corregida de Swiper
         inicializarSwiper();
     }
 }
-// 5. INICIALIZADORES (Menú, Swiper, etc.)
-function inicializarSwiper() {
-    // Si ya existe un swiper activo, lo destruimos para crear uno nuevo con las fotos de Supabase
-    if (window.swiperInstance) window.swiperInstance.destroy();
 
-    window.swiperInstance = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        // Solo activamos loop si hay más de 3 fotos
-        loop: document.querySelectorAll('.swiper-slide').length > 3, 
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        pagination: { el: ".swiper-pagination", clickable: true },
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-}
-
-// 6. EJECUCIÓN INICIAL
+// Ejecución al cargar
 document.addEventListener('DOMContentLoaded', () => {
-    cargarConfiguracion();
     cargarGaleria();
-    // Aquí puedes incluir tu función de toggleMenu que ya tenías
-
+    // cargarConfiguracion(); // Tu otra función para precios
 });
-
-
