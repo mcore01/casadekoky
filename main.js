@@ -1,6 +1,6 @@
 // 1. CONFIGURACIÓN (RELLENA CON TUS DATOS DE SETTINGS > API)
-const SUPA_URL ;
-const SUPA_KEY ;
+const SUPABASE_URL = 'https://pmejptyabrcqyfonzjax.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_HzS1qYKDxvSPdjveYAkD2Q_ew6WEgDS';
 const _supabase = supabase.createClient(SUPA_URL, SUPA_KEY); 
 
 // 2. ESTADO GLOBAL
@@ -107,6 +107,7 @@ document.addEventListener('keydown', (e) => {
         if (e.key === "ArrowLeft") changeImage(-1);
     }
 });
+
 
 
 
